@@ -20,6 +20,7 @@ public class GameRoom {
     private Integer maxTime;
     private Boolean isPrivate = false;
     private String accessCode;
+    @Column(columnDefinition = "TEXT")
     private String activePlayers;
     private String description;
     private String status;

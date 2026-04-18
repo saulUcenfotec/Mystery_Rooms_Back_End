@@ -1,5 +1,7 @@
 package com.project.mysteryRomms.controller;
 
+import com.project.mysteryRomms.dto.request.UserSessionStatsRequest;
+import com.project.mysteryRomms.dto.response.UserStatsSummaryResponse;
 import com.project.mysteryRomms.dto.response.Meta;
 import com.project.mysteryRomms.exception.GlobalResponseHandler;
 import com.project.mysteryRomms.model.entity.Role;
@@ -7,6 +9,7 @@ import com.project.mysteryRomms.model.entity.User;
 import com.project.mysteryRomms.model.enums.RoleEnum;
 import com.project.mysteryRomms.repository.RoleRepository;
 import com.project.mysteryRomms.repository.RepositoryUser;
+import com.project.mysteryRomms.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -31,6 +34,8 @@ public class UserRestController {
     private RoleRepository roleRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserService userService;
 
     @GetMapping
     @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
@@ -138,6 +143,19 @@ public class UserRestController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return (User) authentication.getPrincipal();
     }
+
+    @GetMapping("/{userId}/stats")
+    public ResponseEntity<UserStatsSummaryResponse> getUserStats(@PathVariable Long userId) {
+        return ResponseEntity.ok(userService.getUserStatsSummary(userId));
+    }
+
+    @PostMapping("/{userId}/session-stats")
+    public ResponseEntity<UserStatsSummaryResponse> recordSessionStats(
+            @PathVariable Long userId,
+            @RequestBody UserSessionStatsRequest request) {
+        return ResponseEntity.ok(userService.recordSessionStats(userId, request));
+    }
+
     @PatchMapping("/{userId}/disable")
     @PreAuthorize("hasAnyRole('SUPER_ADMIN')")
     public ResponseEntity<?> disableUser(@PathVariable Long userId, HttpServletRequest request) {

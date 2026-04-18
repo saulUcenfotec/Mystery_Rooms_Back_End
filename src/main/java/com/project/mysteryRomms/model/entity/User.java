@@ -55,6 +55,39 @@ public class User implements UserDetails {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "sessions_played", nullable = false, columnDefinition = "bigint default 0")
+    private Long sessionsPlayed = 0L;
+
+    @Column(name = "total_session_seconds", nullable = false, columnDefinition = "bigint default 0")
+    private Long totalSessionSeconds = 0L;
+
+    @Column(name = "average_session_seconds", nullable = false, columnDefinition = "double precision default 0")
+    private Double averageSessionSeconds = 0.0;
+
+    @Column(name = "total_puzzle_solve_seconds", nullable = false, columnDefinition = "bigint default 0")
+    private Long totalPuzzleSolveSeconds = 0L;
+
+    @Column(name = "average_puzzle_solve_seconds", nullable = false, columnDefinition = "double precision default 0")
+    private Double averagePuzzleSolveSeconds = 0.0;
+
+    @Column(name = "total_successes", nullable = false, columnDefinition = "bigint default 0")
+    private Long totalSuccesses = 0L;
+
+    @Column(name = "average_successes", nullable = false, columnDefinition = "double precision default 0")
+    private Double averageSuccesses = 0.0;
+
+    @Column(name = "total_failures", nullable = false, columnDefinition = "bigint default 0")
+    private Long totalFailures = 0L;
+
+    @Column(name = "average_failures", nullable = false, columnDefinition = "double precision default 0")
+    private Double averageFailures = 0.0;
+
+    @Column(name = "total_puzzles_solved", nullable = false, columnDefinition = "bigint default 0")
+    private Long totalPuzzlesSolved = 0L;
+
+    @Column(name = "average_puzzles_solved", nullable = false, columnDefinition = "double precision default 0")
+    private Double averagePuzzlesSolved = 0.0;
+
     // Constructors
     public User() {}
 
@@ -176,5 +209,93 @@ public class User implements UserDetails {
     }
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Long getSessionsPlayed() {
+        return sessionsPlayed;
+    }
+
+    public void setSessionsPlayed(Long sessionsPlayed) {
+        this.sessionsPlayed = sessionsPlayed;
+    }
+
+    public Long getTotalSessionSeconds() {
+        return totalSessionSeconds;
+    }
+
+    public void setTotalSessionSeconds(Long totalSessionSeconds) {
+        this.totalSessionSeconds = totalSessionSeconds;
+    }
+
+    public Double getAverageSessionSeconds() {
+        return averageSessionSeconds;
+    }
+
+    public void setAverageSessionSeconds(Double averageSessionSeconds) {
+        this.averageSessionSeconds = averageSessionSeconds;
+    }
+
+    public Long getTotalPuzzleSolveSeconds() {
+        return totalPuzzleSolveSeconds;
+    }
+
+    public void setTotalPuzzleSolveSeconds(Long totalPuzzleSolveSeconds) {
+        this.totalPuzzleSolveSeconds = totalPuzzleSolveSeconds;
+    }
+
+    public Double getAveragePuzzleSolveSeconds() {
+        return averagePuzzleSolveSeconds;
+    }
+
+    public void setAveragePuzzleSolveSeconds(Double averagePuzzleSolveSeconds) {
+        this.averagePuzzleSolveSeconds = averagePuzzleSolveSeconds;
+    }
+
+    public Long getTotalSuccesses() {
+        return totalSuccesses;
+    }
+
+    public void setTotalSuccesses(Long totalSuccesses) {
+        this.totalSuccesses = totalSuccesses;
+    }
+
+    public Double getAverageSuccesses() {
+        return averageSuccesses;
+    }
+
+    public void setAverageSuccesses(Double averageSuccesses) {
+        this.averageSuccesses = averageSuccesses;
+    }
+
+    public Long getTotalFailures() {
+        return totalFailures;
+    }
+
+    public void setTotalFailures(Long totalFailures) {
+        this.totalFailures = totalFailures;
+    }
+
+    public Double getAverageFailures() {
+        return averageFailures;
+    }
+
+    public void setAverageFailures(Double averageFailures) {
+        this.averageFailures = averageFailures;
+    }
+
+    public Long getTotalPuzzlesSolved() {
+        return totalPuzzlesSolved;
+    }
+
+    public void setTotalPuzzlesSolved(Long totalPuzzlesSolved) {
+        this.totalPuzzlesSolved = totalPuzzlesSolved;
+    }
+
+    public Double getAveragePuzzlesSolved() {
+        return averagePuzzlesSolved;
+    }
+
+    public void setAveragePuzzlesSolved(Double averagePuzzlesSolved) {
+        this.averagePuzzlesSolved = averagePuzzlesSolved;
     }
 }

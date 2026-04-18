@@ -45,7 +45,7 @@ public class AuthController {
 
     public AuthController(JwtService jwtService, AuthenticationService authentication) {
         this.jwtService = jwtService;
-        this.authenticationService = authenticationService;
+        this.authenticationService = authentication;
     }
 
     @PostMapping("/login")
